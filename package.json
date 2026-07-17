@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "My Playwright + JavaScript learning journey, upgrading from a Selenium/Java automation background.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:report":"npx playwright test example && npx playwright show-report"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Code-By-Adarsh/Learning-Playwright-JS.git"
