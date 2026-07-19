@@ -1,6 +1,10 @@
 # Playwright Learning
  
 My Playwright + JavaScript learning journey, upgrading from a Selenium/Java automation background.
+
+# Website used in learning:
+1. https://practicesoftwaretesting.com/
+2. https://www.saucedemo.com
  
 ## 👋 About This Repo
  
