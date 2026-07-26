@@ -1,6 +1,5 @@
 //@ts-check
 import { test, expect } from '@playwright/test';
-import { todo } from 'node:test';
 
 test('Verify Add Item', async ({ page }) => {
   await page.goto('https://todomvc.com/examples/react/dist/');
