@@ -1,7 +1,7 @@
 //@ts-check
 import {test,expect} from '@playwright/test'
 
-test.describe("Basic Functionality Testing",()=>{
+test.describe("Basic Functionality Testing with no auth",()=>{
     test.beforeEach("Open page",async ({page})=>{
         await page.goto('https://practicesoftwaretesting.com/')
     })
@@ -23,5 +23,17 @@ test.describe("Basic Functionality Testing",()=>{
         await page.locator('[data-test="search-query"]').fill("Thor Hammer")
         await page.locator('[data-test="search-submit"]').click()
         await expect(page.getByAltText("Thor Hammer")).toBeVisible()
+    })
+})
+
+test.describe("Basic functionality testing with auth",()=>{
+    test.use({storageState:".auth/customer01.json"})
+
+    test.beforeEach(async({page})=>{
+        await page.goto("https://practicesoftwaretesting.com/")
+    })
+
+    test("Verify customer 01 is logged in",async ({page})=>{
+        await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Jane/)
     })
 })
