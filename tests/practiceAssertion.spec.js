@@ -10,6 +10,10 @@ test.describe("Basic Functionality Testing with no auth",()=>{
         await expect(page.locator('[data-test="nav-sign-in"]')).toHaveText('Sign in')
     })
 
+    test("Verify visual test for no auth",async ({page})=>{
+        await expect(page).toHaveScreenshot("no-auth-ss.png")
+    })
+
     test("Verify Title", async ({page})=>{
         await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0")
     })
@@ -34,6 +38,11 @@ test.describe("Basic functionality testing with auth",()=>{
     })
 
     test("Verify customer 01 is logged in",async ({page})=>{
-        await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Jane/)
+        await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Howe/)
+    })
+
+    test("Visual test for auth",async ({page})=>{
+        await page.waitForLoadState("networkidle")
+        await expect(page).toHaveScreenshot("auth-ss.png")
     })
 })
