@@ -11,6 +11,7 @@ test.describe("Basic Functionality Testing with no auth",()=>{
     })
 
     test("Verify visual test for no auth",async ({page})=>{
+        await expect(page.getByTitle("Practice Software Testing - Toolshop")).toBeVisible()
         await expect(page).toHaveScreenshot("no-auth-ss.png")
     })
 
