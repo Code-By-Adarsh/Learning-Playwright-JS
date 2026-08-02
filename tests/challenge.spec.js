@@ -1,21 +1,29 @@
 //@ts-check
 import {test,expect} from '@playwright/test'
 
-test.describe("Challenge tests",()=>{
+test.describe("Challenge Accepted",()=>{
     test.use({
-        storageState:".auth/customer01.json"
+        storageState:".auth/customer02.json"
     })
 
-    test.beforeEach(async ({page})=>{
-        await page.goto("https://practicesoftwaretesting.com/account")
+    test.beforeEach(async({page})=>{
+        await page.goto("https://practicesoftwaretesting.com/")
     })
 
-    // test("1st checkout flow",async ({page})=>{
-    //     await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Howe/)
-    // })
-
-    test("2nd visual test",async ({page})=>{
-        await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Howe/)
-        await expect(page).toHaveScreenshot("homepage.png")
+    test("Challenge 1 - Checkout Flow",async ({page})=>{
+        await page.locator('[data-test="nav-home"]').click();
+        await page.getByAltText("Combination Pliers").click();
+        await page.locator('[data-test="add-to-cart"]').click();
+        await page.locator('[data-test="nav-cart"]').click();
+        await page.locator('[data-test="proceed-1"]').click();
+        await page.locator('[data-test="proceed-2"]').click();await page.locator('[data-test="postal_code"]').fill('0000');
+        await page.locator('[data-test="house_number"]').fill('103');
+        await expect.soft(page.locator('[data-test="proceed-3"]')).toBeEnabled({timeout:10000})
+        await page.locator('[data-test="proceed-3"]').click();
+        await page.locator('[data-test="payment-method"]').selectOption('cash-on-delivery');
+        await page.locator('[data-test="finish"]').click();
+        await expect.soft(page.locator('[data-test="payment-success-message"]')).toContainText('Payment was successful');
+        await page.locator('[data-test="finish"]').click();
+        await expect(page.locator('#order-confirmation')).toHaveText(/Thanks for your order!/);
     })
 })
