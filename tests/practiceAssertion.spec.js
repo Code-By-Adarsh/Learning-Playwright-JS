@@ -31,18 +31,18 @@ test.describe("Basic Functionality Testing with no auth",()=>{
 })
 
 test.describe("Basic functionality testing with auth",()=>{
-    test.use({storageState:".auth/customer01.json"})
-
+    test.use({storageState: ".auth/customer02.json"})
+    
     test.beforeEach(async({page})=>{
         await page.goto("https://practicesoftwaretesting.com/")
     })
 
-    test("Verify customer 01 is logged in",async ({page})=>{
-        await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Howe/)
+    test("Verify customer 02 is logged in",async ({page})=>{
+        await expect(page.locator('[data-test="nav-menu"]')).toHaveText(/Jack Howe/)
     })
 
     test("Visual test for auth",async ({page})=>{
-        await page.waitForLoadState("networkidle")
+        await expect(page.locator('[data-test="nav-menu"]')).toBeVisible()
         await expect(page).toHaveScreenshot("auth-ss.png")
     })
 })
