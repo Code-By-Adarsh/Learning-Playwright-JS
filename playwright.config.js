@@ -19,6 +19,9 @@ export default defineConfig({
   // Look for test files in the "tests" directory, relative to this configuration file.
   testDir: './tests',
 
+  //for the all type of screenshot that will be used in tests
+  snapshotPathTemplate: '{testDir}/../.screenshot/{arg}{ext}',
+
   /* Run tests in files in parallel */
   fullyParallel: true,
 
@@ -50,6 +53,10 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name:'setup',
+      testMatch:'**/auth-setup.spec.js'
+    },
+    {
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
@@ -60,6 +67,7 @@ export default defineConfig({
         trace:"on" //by default -> off
         */
       },
+      dependencies:['setup']
     },
 
     // {
