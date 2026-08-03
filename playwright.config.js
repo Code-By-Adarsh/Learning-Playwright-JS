@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   timeout:60000,
-  globalTimeout:10*60*100,
+  globalTimeout:10*60*1000,
 
   // Look for test files in the "tests" directory, relative to this configuration file.
   testDir: './tests',
