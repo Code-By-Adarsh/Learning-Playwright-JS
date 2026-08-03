@@ -33,4 +33,23 @@ test.describe("Challenge Accepted",()=>{
         await expect(page.locator('[data-test="product-name"]')).toBeVisible();
         await expect(page).toHaveScreenshot("Combination-Pliers.png")
     })
+
+    test("Challenge 3 - Api test product/{id} endpoint",async ({request})=>{
+        //const productId = "01KZ45NMWK3VKC8T6HXQJMCR5J"
+        const listResponse = await request.get(`https://api.practicesoftwaretesting.com/products?q=Combination Pliers`);
+        expect(listResponse.status()).toBe(200);
+        const listBody = await listResponse.json();
+        const productId = listBody.data[0].id;
+
+        const apiUrl = `https://api.practicesoftwaretesting.com/products/${productId}`
+        const response = await request.get(apiUrl)
+
+        expect(response.status()).toBe(200)
+        const body = await response.json()
+        expect(body).toHaveProperty("id",productId)
+        expect(body).toHaveProperty("name")
+        expect(body).toHaveProperty("description")
+        expect(body).toHaveProperty("price")
+        //console.log(body)
+    })
 })
