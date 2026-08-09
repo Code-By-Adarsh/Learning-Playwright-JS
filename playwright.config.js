@@ -67,8 +67,16 @@ export default defineConfig({
         trace:"on" //by default -> off
         */
       },
-      dependencies:['setup']
+      dependencies:['setup'],
+      testDir:'./tests/challenge'
     },
+    {
+      name:'fixture',
+      use:{
+        ...devices['Desktop Chrome']
+      },
+      testDir:'./tests/Fixtures'
+    }
 
     // {
     //   name: 'firefox',
