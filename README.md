@@ -5,7 +5,8 @@ My Playwright + JavaScript learning journey, upgrading from a Selenium/Java auto
 # Website used in learning:
 1. https://practicesoftwaretesting.com/
 2. https://www.saucedemo.com
- 
+3. https://binaryville.com
+
 ## 👋 About This Repo
  
 I started my automation testing journey with **Selenium + Java**, built a strong QA foundation (Selenium, TestNG, Maven, POM, Postman, MySQL, Jira), and completed a QA internship along with a full manual STLC project.
