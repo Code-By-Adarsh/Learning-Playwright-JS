@@ -20,7 +20,7 @@ export default defineConfig({
   testDir: './tests',
 
   //for the all type of screenshot that will be used in tests
-  snapshotPathTemplate: '{testDir}/../.screenshot/{arg}{ext}',
+  snapshotPathTemplate: '{testDir}/../../.screenshot/{arg}{ext}',
 
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -57,7 +57,7 @@ export default defineConfig({
       testMatch:'**/auth-setup.spec.js'
     },
     {
-      name: 'chromium',
+      name: 'challenge',
       use: { 
         ...devices['Desktop Chrome'],
         /*
@@ -76,7 +76,17 @@ export default defineConfig({
         ...devices['Desktop Chrome']
       },
       testDir:'./tests/Fixtures'
+    },
+    
+    //if you want to run other test files
+    {
+      name:"Chromium",
+      use:{
+        ...devices["Desktop Chrome"]
+      },
+      testIgnore:['**/challenge/**','**/Fixtures/**','**/setupFiles/**']
     }
+      
 
     // {
     //   name: 'firefox',
