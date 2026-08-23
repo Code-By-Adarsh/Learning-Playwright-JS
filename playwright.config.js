@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import { on } from 'node:cluster';
 
 /**
  * Read environment variables from file.
@@ -44,7 +45,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     screenshot:'on',
-    video:'on-first-retry',
+    video:'on',
     trace: 'on-first-retry',
     viewport:{width:922,height:411},
     headless:true,
