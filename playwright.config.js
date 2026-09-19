@@ -85,7 +85,9 @@ export default defineConfig({
       use:{
         ...devices["Desktop Chrome"]
       },
-      testIgnore:['**/challenge/**','**/Fixtures/**','**/setupFiles/**']
+      testIgnore:['**/challenge/**','**/Fixtures/**','**/setupFiles/**'],
+      snapshotPathTemplate: '{testDir}/../.screenshot/{arg}{ext}',
+      dependencies:['setup'],
     }
       
 

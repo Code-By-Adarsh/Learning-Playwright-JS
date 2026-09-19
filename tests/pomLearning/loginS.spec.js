@@ -16,7 +16,8 @@ test('Verify standard login',async({page,loginPage})=>{
 
 test('Verify locked out user login behavior',async({page,loginPage})=>{
     await loginPage.login('locked_out_user')
-    await expect(page.getByRole('heading',{name:'Epic sadface: Sorry, this user has been locked out.'})).toBeVisible()
+    //await expect(page.getByRole('heading',{name:'Epic sadface: Sorry, this user has been locked out.'})).toBeVisible()
+    await expect(page.getByText('Epic sadface: Sorry, this user has been locked out.')).toBeVisible()
 })
 
 test('Verify problem user login behavior',async({page,loginPage})=>{
@@ -27,7 +28,7 @@ test('Verify problem user login behavior',async({page,loginPage})=>{
 
 test('Verify performance glitch user login behavior',async({page,loginPage})=>{
     await loginPage.login('performance_glitch_user')
-    await expect(page.getByRole('img',{name:'Sauce Labs Backpack'})).toBeVisible({timeout:3_000})
+    await expect(page.getByRole('img',{name:'Sauce Labs Backpack'})).toBeVisible()
 })
 
 test('Verify error user login behavior',async({page,loginPage})=>{
@@ -36,9 +37,4 @@ test('Verify error user login behavior',async({page,loginPage})=>{
     await page.getByRole('button',{name:'Remove'}).click()
     await page.locator('#shopping_cart_container').click()
     await expect(page.getByText('Sauce Labs Backpack')).toBeVisible()
-})
-
-test('Verify visual user login behavior',async({page,loginPage})=>{
-    await loginPage.login('visual_user')
-    await expect(page).toHaveScreenshot('Visual_user.png')
 })

@@ -15,7 +15,7 @@ test.describe("Sign In Test",{tag:"@signin"},()=>{
 test.describe("Contact test",{tag:"@contact"},()=>{
   test("Verify contact page is accessible",async ({page})=>{
     await page.goto('https://practicesoftwaretesting.com/')
-    await page.locator('[data-test="nav-contact"]').click();
+    await page.getByRole('link',{'name':'Contact'}).click();
     await expect(page.getByRole('heading')).toContainText('Contact');
   })
 })
@@ -26,6 +26,6 @@ test.describe("Verify Categories Functionality",{tag:'@category'},()=>{
     await page.locator('[data-test="nav-categories"]').click();
     await page.locator('[data-test="nav-hand-tools"]').click();
     await expect(page.locator('[data-test="page-title"]')).toContainText('Category: Hand Tools');
-    await expect(page.locator('[data-test="product-01KY76PHCDAK2Z9BPBA572664Z"]')).toBeVisible();
+    await expect(page.getByRole('img',{name:'Combination Pliers'})).toBeVisible();
   })
 })
