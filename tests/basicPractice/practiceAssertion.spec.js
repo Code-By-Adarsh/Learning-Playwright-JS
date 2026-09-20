@@ -12,7 +12,11 @@ test.describe("Basic Functionality Testing with no auth",()=>{
 
     test("Verify visual test for no auth",async ({page})=>{
         await expect(page.getByTitle("Practice Software Testing - Toolshop")).toBeVisible()
-        await expect(page).toHaveScreenshot("no-auth-ss.png")
+        if(!process.env.CI){
+            await expect(page).toHaveScreenshot("no-auth-ss.png")
+        }else{
+            await expect(page).toHaveScreenshot("no-auth-ss-cicd.png")
+        }
     })
 
     test("Verify Title", async ({page})=>{
@@ -44,6 +48,10 @@ test.describe("Basic functionality testing with auth",()=>{
 
     test("Visual test for auth",async ({page})=>{
         await expect(page.locator('[data-test="nav-menu"]')).toBeVisible()
-        await expect(page).toHaveScreenshot("auth-ss.png")
+        if(!process.env.CI){
+            await expect(page).toHaveScreenshot("auth-ss.png")
+        }else{
+            await expect(page).toHaveScreenshot("auth-ss-cicd.png")
+        }
     })
 })

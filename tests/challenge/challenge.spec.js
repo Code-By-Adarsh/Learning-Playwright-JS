@@ -31,7 +31,12 @@ test.describe("Challenge Accepted",()=>{
         await page.locator('[data-test="nav-home"]').click();
         await page.getByAltText("Combination Pliers").click();
         await expect(page.locator('[data-test="product-name"]')).toBeVisible();
-        await expect(page).toHaveScreenshot("Combination-Pliers.png")
+        await page.getByRole('button',{name:'Add to cart'}).waitFor({state:'visible'});
+        if(process.env.CI){
+            await expect(page).toHaveScreenshot("Combination-Pliers-cicd.png")
+        }else{
+            await expect(page).toHaveScreenshot("Combination-Pliers.png")
+        }
     })
 
     test("Challenge 3 - Api test product/{id} endpoint",async ({request})=>{
