@@ -4,7 +4,7 @@
   "description": "My Playwright + JavaScript learning journey, upgrading from a Selenium/Java automation background.",
   "main": "index.js",
   "scripts": {
-    "test:report":"npx playwright test example && npx playwright show-report"
+    "test:report": "npx playwright test example && npx playwright show-report"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Code-By-Adarsh/Learning-Playwright-JS#readme",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.1.0"
+    "@types/node": "^26.1.0",
+    "dotenv": "^18.0.1"
   }
 }

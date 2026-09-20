@@ -18,8 +18,8 @@ test("POST /users/login",async ({request})=>{
     //const apiUrl = "https://api.practicesoftwaretesting.com"
     const response = await request.post("/users/login",{
         data:{
-            email:"customer@practicesoftwaretesting.com",
-            password:"welcome01",
+            email:process.env.testEmail,
+            password:process.env.testPassword,
         },
     })
 

@@ -25,6 +25,9 @@ jobs:
 
       - name: Run Playwright Tests
         run: npx playwright test
+        env:
+          testEmail: ${{ secrets.TESTEMAIL}}
+          testPassword: ${{ secrets.TESTPASSWORD}}
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
