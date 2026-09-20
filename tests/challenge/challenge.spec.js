@@ -13,6 +13,7 @@ test.describe("Challenge Accepted",()=>{
     test("Challenge 1 - Checkout Flow",async ({page})=>{
         await page.locator('[data-test="nav-home"]').click();
         await page.getByAltText("Combination Pliers").click();
+        await page.getByRole('button',{name:'Add to cart'}).waitFor({state:'visible'});
         await page.locator('[data-test="add-to-cart"]').click();
         await page.locator('[data-test="nav-cart"]').click();
         await page.locator('[data-test="proceed-1"]').click();
